@@ -1,0 +1,5 @@
+{
+  "name": "Retail Sales Analytics",
+  "description": "A comprehensive dashboard for tracking retail sales, inventory, and performance metrics using Firestore.",
+  "requestFramePermissions": []
+}

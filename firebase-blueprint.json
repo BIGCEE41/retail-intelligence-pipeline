@@ -1,0 +1,57 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "A retail product in the inventory.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Name of the product" },
+        "price": { "type": "number", "description": "Unit price" },
+        "category": { "type": "string", "description": "Category of the product" },
+        "stock": { "type": "integer", "description": "Current stock level" },
+        "sku": { "type": "string", "description": "Stock Keeping Unit" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp" }
+      },
+      "required": ["name", "price", "category", "stock", "sku"]
+    },
+    "Sale": {
+      "title": "Sale",
+      "description": "A record of a retail sale transaction.",
+      "type": "object",
+      "properties": {
+        "productId": { "type": "string", "description": "Reference to the product" },
+        "productName": { "type": "string", "description": "Name of the product at time of sale" },
+        "quantity": { "type": "integer", "description": "Number of units sold" },
+        "totalAmount": { "type": "number", "description": "Total transaction amount" },
+        "timestamp": { "type": "string", "format": "date-time", "description": "Sale timestamp" },
+        "sellerId": { "type": "string", "description": "User ID of the seller" }
+      },
+      "required": ["productId", "productName", "quantity", "totalAmount", "timestamp", "sellerId"]
+    },
+    "User": {
+      "title": "User",
+      "description": "A user of the analytics platform.",
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "manager", "staff"] }
+      },
+      "required": ["displayName", "email", "role"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Collection of products."
+    },
+    "/sales/{saleId}": {
+      "schema": "Sale",
+      "description": "Collection of sales transactions."
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles and roles."
+    }
+  }
+}
